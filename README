@@ -1,0 +1,199 @@
+
+
+/*  
+ * Filename: README
+ * Author: Abdikhalik Ahmed
+ * UserId: cs30s2019ac
+ * Date: 9/5/2019
+ * Sources of Help: None
+ *
+ */
+
+*******************************BASICS*************************************
+This assignment basically impelements the ls command found in linux. It takes
+anumber of commandline option including -l for long format, -a for show hidden
+files, - t sort by time, -r reverse sort, -c print file count etc.
+
+******************************FUNCTIONALITY_UNDER THE HOOD*********************
+The assignent is practice of  ARM assembly bitwise operations, memory loads and
+stores, using standard c library routines and functions, calling assembly
+subroutines from c functions, working with function pointers in assembly 
+and accessing global variables in c modules from
+inside assembly modules and recursion which is used in all files that deal with
+file tree creation, printing of the file tree and getting count of number of
+files and directories
+
+*********** COMPILATION*****************************
+
+The user can use gcc to compile and link the c modules and their related modules
+from assembly and run them as a regular c modules
+
+***************************RUNNING THE PROGRAM*********************
+
+you can run the program with the following options:
+
+./myls  -f -l -t -r -a -c
+
+        where 
+        -f is followed by file or directory name
+        -l prints files in long format
+        -t -sorts by time
+        -r reverse sort
+        -a show hidden files
+        -c print file count
+
+        all the options are optional. if no file or directory to start with is
+        given, the program starts with current directory(".");
+
+
+ *********NORMAL OUTPUT*******************************
+
+                        AS ABOVE
+
+ ********************************INCORRECT ARGUMENTS********************
+
+ ./myls -g  (  invali option)
+ 
+ 
+ ./myls -f "hellllllll"  (file does not exist)
+
+  etc
+
+ *********************TESTS******************************
+
+ This was program was tested by doing the following:
+
+ * Unit tests: each of the functions and assembly routines has been tested on
+   its own by passing in simulated arguments
+ * group tests: functions that call other functions have been tested together
+   with those they call by passing arguments and in turn them passing arguments
+   to their subroutines
+ * finally, the whole program was tested against given reference output
+
+
+ ***************************MACHINE CODE TRANSLATION*************************
+
+ 1) add fp, sp, FP_OFFSET(4)
+
+  cond   op  i   cmd   s     Rn    Rd         src2
+  1110  00   1   0100  0     1101  1011     0000 0000 0100
+
+  Ox28DB004
+
+
+
+
+
+ 2)
+
+  cond   op  i   P U B W L    Rn    Rd         src2
+ 1110    01  0   1 0 0 0 0    1011  0001    0000 0000 1100
+
+ 0xE50B100C
+
+
+ 
+ 3)
+
+  cond   op  i   P U B W L    Rn    Rd         src2
+  1110   01  0   1 0 0 0 1    1011  0001       0000 0000 1100
+  
+  0xE51B100C
+
+
+ 4)
+  cond  OP    1 L              imm 24
+  1010  10    1 0              0------0011
+ 
+  OxAA000003
+
+
+ 5)
+
+  cond  OP    1 L              imm 24
+  1101  10    1 0              0----------0001
+
+  OxDA000001
+
+ 6)
+
+  cond   op  i   cmd   s     Rn    Rd         src2
+  1110   00  1   0010  0     1011  1101      0000 0000 0100
+
+  0xE24BD004
+
+  
+
+
+ **************************BUFFER-OVERFLOW EXPLOIT****************************
+
+1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+   lr   |   lr     |     lr                | lr
+----------------------------------------------------------------
+----------------------------------------------------------------
+      |   lr     |     lr                | lr
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+   ptrToIsHidden   |ptrToIsHidden |  ptrToIsHidden |ptrToIsHidden
+----------------------------------------------------------------
+   buf[0]  |    buf[1]   |     buf[2]              |  buf[3]
+----------------------------------------------------------------
+   buf[17]  |   buf[18]   |     buf[19]              |  buf[20]
+----------------------------------------------------------------
+   fp  |   fp    |     fp               |  fp
+----------------------------------------------------------------
+----------------------------------------------------------------
+   lr   |   lr     |     lr                |  lr
+----------------------------------------------------------------
+
+
+
+2) 20. That is the length of the string needed to overflow the buffer
+
+3)
