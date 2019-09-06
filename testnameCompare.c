@@ -3,7 +3,7 @@
  * Filename: testnameCompare.c
  * Author: Abdikhalik Ahmed
  * Userid: cs30s219ac@ucsd.edu
- * Description: Unit test program to test the function writeTables().
+ * Description: Unit test program to test the function nameCompare().
  * Date: 8/29/2019
  * Sources of Help: NONE
  */
@@ -27,32 +27,38 @@
 
 
 
- char* fileName = "printFiles.c";
+ char* fileName = "printFiles.c";//filename
 
+ //create struct fileInfo
   struct fileInfo* file = (struct fileInfo*) malloc( sizeof(struct fileInfo));;
 
   getFileInfo(file, fileName);
 
- char* anotherFile = "main.c";
-
+ //create another file to compare with
+  char* anotherFile = "main.c";
 
   struct fileInfo* file1 = (struct fileInfo*) malloc( sizeof(struct fileInfo));;
   getFileInfo(file1, anotherFile);
+  
 
-
+  //test 
   TEST( nameCompare(&file, &file1) == 1);//printFiles vs main.c
 
  
-
   
- char* filename = "getFileInfo.c";
-
+  //create another file to compare with
+  char* filename = "getFileInfo.c";
 
   struct fileInfo* file3 = (struct fileInfo*) malloc( sizeof(struct fileInfo));;
   getFileInfo(file3,filename);
 
-
+  //test
   TEST( nameCompare(&file3, &file1) == -1 );//main.c vs getFileInfo
+  
+  //free the files
+  free(file);
+  free(file1);
+  free(file3);
 
 }
 
