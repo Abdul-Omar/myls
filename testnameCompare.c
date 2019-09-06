@@ -29,31 +29,31 @@
 
  char* fileName = "printFiles.c";
 
-  struct fileInfo file;
-  
+  struct fileInfo* file = (struct fileInfo*) malloc( sizeof(struct fileInfo));;
 
-
-  getFileInfo(&file, fileName);
+  getFileInfo(file, fileName);
 
  char* anotherFile = "main.c";
 
-  struct fileInfo file1;
 
-   getFileInfo(&file1, anotherFile);
+  struct fileInfo* file1 = (struct fileInfo*) malloc( sizeof(struct fileInfo));;
+  getFileInfo(file1, anotherFile);
 
-  //TEST( nameCompare(&file, &file1) == 1 );
+
+  TEST( nameCompare(&file, &file1) == 1);//printFiles vs main.c
 
  
 
   
- char* filename = "testtimeCompare.c";
-
-  struct fileInfo file3;
-
-  getFileInfo(&file3,filename);
+ char* filename = "getFileInfo.c";
 
 
- TEST( nameCompare(&file1, &file1) == 0);
+  struct fileInfo* file3 = (struct fileInfo*) malloc( sizeof(struct fileInfo));;
+  getFileInfo(file3,filename);
+
+
+  TEST( nameCompare(&file3, &file1) == -1 );//main.c vs getFileInfo
+
 }
 
 

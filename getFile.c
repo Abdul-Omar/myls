@@ -30,7 +30,7 @@ int getFileCount(const struct fileInfo* fi) {
     
     if(fi != NULL) { 
      
-      int i = 0;
+      int i =0;
       while( i < fi->childrenSize) {       
        
         

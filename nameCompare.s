@@ -22,7 +22,7 @@
 /*
  * Function name: nameCompare()
  * Function prototype: nameeCompare(const void*p1, const void* p2);
- * Description: this function comparesnames of two files
+ * Description: this function compares names of two files
  * Parameters: p1, the first file, p2-the second file
  * Side Effects: None.
  * Error Conditions: None.

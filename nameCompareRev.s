@@ -20,16 +20,19 @@
 .align 2
 .global nameCompareRev
 
+
 /*
- * Function name: nameCompare()
- * Function prototype: TODO
- * Description: TODO
- * Parameters: TODO
+ * Function name: nameCompareRev()
+ * Function prototype: nameeCompareRev(const void*p1, const void* p2);
+ * Description: this function compares names of two files
+ * Parameters: p1, the first file, p2-the second file
  * Side Effects: None.
  * Error Conditions: None.
- * Return Value: TODO
- * Registers Used: TODO
+ * Return Value: 0-if equal, 1-first is smaller, -1-second is smaller
+ * Registers Used: r0-parameters, r1, parameters( and basic operations)
  */
+
+
 nameCompareRev:
    
    

@@ -3,8 +3,9 @@
  * Filename: timeCompareRev.s
  * Author: Abdikhalik Ahmed
  * Userid: cse30s219ac
- * Description: defines the timeCompare funtion that is passed in as
- *              parameter for qsort() function used in the PA4 program.
+ * Description: defines the timeCompareRev function that is passed in as
+ *              parameter for qsort() function used in the PA4 program. sorts
+ *              the time reverse order.
  * Date: 9/5/2019
  * Sources of Help: NONE
  */

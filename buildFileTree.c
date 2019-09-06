@@ -3,7 +3,7 @@
  * Filename: buildFileTree.c
  * Author: Abdikhalik Ahmed
  * UserId: cs30s2019ac
- * Date:    8/29/2019
+ * Date:    9/5/2019
  * Sources of Help: None
  *
  */
@@ -28,8 +28,8 @@
 
 /*
  * Function Name: buildFileTree()
- * Function Prototype:struct fileInfo*  buildFileTree(const char* filename, Sortby sortby,
- *                     int rev);
+ * Function Prototype:struct fileInfo*  buildFileTree(const char* filename,
+ *   Sortby sortby, int rev);
  * Description: this function builds the file tree of the directories and files 
  * Return Value: a struct fileInfo*, pointing to the top directory
  */
@@ -87,11 +87,12 @@ struct fileInfo*  buildFileTree(const char* filename, SortBy sortby, int rev){
              
             //add more space if capacity reached    
             fi->children =  realloc(fi->children,         
-                (fi->childrenCapacity + CHILDREN_INCREMENT)* sizeof(struct fileInfo*)); 
+                (fi->childrenCapacity + CHILDREN_INCREMENT)*
+                   sizeof(struct fileInfo*)); 
              fi->childrenCapacity = (fi->childrenCapacity + CHILDREN_INCREMENT);
             //check that realloc worked
             if (  fi->children == NULL) {                   
-              perror(buildFileTree);
+              perror(__func__);
               free( fi->children);
               free(fi);
               return NULL;
@@ -99,7 +100,9 @@ struct fileInfo*  buildFileTree(const char* filename, SortBy sortby, int rev){
           }
        
           //recursively build the tree
-          fi->children[fi->childrenSize] = buildFileTree(currentPath, sortby, rev);          
+          fi->children[fi->childrenSize] =
+             buildFileTree(currentPath, sortby, rev);          
+       
          fi->childrenSize += 1;//increment num of children  
      } 
   }

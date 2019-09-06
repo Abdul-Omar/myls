@@ -3,7 +3,7 @@
  * Filename: printFiles.c
  * Author: Abdikhalik Ahmed
  * UserId: cs30s2019ac
- * Date:    8/29/2019
+ * Date:  9/5/2019
  * Sources of Help: None
  *
  */
@@ -21,7 +21,8 @@
 #include "pa4.h"
 #include "pa4Strings.h"
 
-#define BASE 10
+#define LAST_CHAR  16
+#define FIRST_CHAR 3
 
 /*
  * Function Name: printFiles()
@@ -94,12 +95,13 @@ void printFiles(const struct fileInfo* fi,  int showHidden,
           
            //print relevant info of file 
            printPermissions(fi->children[i]->mode);
-
+           
+           //get user and group id
            struct passwd* pasw = getpwuid(fi->children[i]->uid);
 
            struct group* grp = getgrgid(fi->children[i]->gid);
    
-
+           //get time
            struct tm* tm = localtime(&(fi->children[i]->time));
 
            char* time = asctime(tm);
@@ -110,7 +112,8 @@ void printFiles(const struct fileInfo* fi,  int showHidden,
 
            printf("%5d", fi->children[i]->size);
 
-           for( int k = 3; k< 16; k++) {  
+           //print time ins the specified format
+           for( int k = FIRST_CHAR; k< LAST_CHAR; k++) {  
             
              printf("%c",time[k]); 
            }

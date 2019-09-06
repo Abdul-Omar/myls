@@ -2,7 +2,7 @@
  * Filename: create.c
  * Author: Abdikhalik Ahmed
  * UserId: cs30s2019ac
- * Date:    8/29/2019
+ * Date:    9/5/2019
  * Sources of Help: None
  *
  */
@@ -21,14 +21,16 @@
 /*
  * Function Name: main()
  * Function Prototype: main( int argc, char* argv[]);
- * Description: *     
- * Return Value: print bowtie pattern
+ * Description: This function is the driver of the  main program that builds the
+ * file tree, prints the files, sorts them and gets the file count etc
+ * Return Value: NONE
  */
 int main ( int argc, char* argv[]){
   
  
   int c = 0;//holds the return value of getOpts
   char* filename;
+  //flag for options
   int rev = 0;
   int longFmt = 0;
   int time = 0;
@@ -37,14 +39,13 @@ int main ( int argc, char* argv[]){
 
   // process commandLine args
  while (( c = getopt(argc, argv, FLAGS)) != -1 ) { 
-     
-     
+          
    switch(c) {  
-       
-       
+              
       case FLAG_SHOWHIDDEN:
 
              showHidden = 1;
+             break;
     
       case FLAG_COUNT:
                  
@@ -90,7 +91,6 @@ int main ( int argc, char* argv[]){
                return EXIT_FAILURE;
       
       case ':':
-
                
               filename = ".";
                 break;
@@ -128,13 +128,11 @@ int main ( int argc, char* argv[]){
 //check time is used to sort or no
  if( time == 0) { 
      
-     criteria = NAME;  
-     
+     criteria = NAME;       
  }
  else { 
     
-     criteria = TIME;
-     
+     criteria = TIME;     
  }
 
  if (filename == NULL) {  
@@ -142,7 +140,8 @@ int main ( int argc, char* argv[]){
     filename = ".";
      
  }
- struct fileInfo* fi =  buildFileTree( filename,criteria, rev );
+  //build the tree
+  struct fileInfo* fi =  buildFileTree( filename,criteria, rev );
 
   //if file count was specified
   if( count  == 1)  {  
@@ -157,4 +156,6 @@ int main ( int argc, char* argv[]){
 
 
    freeFileTree(fi);
+
+   return EXIT_SUCCESS;
 }

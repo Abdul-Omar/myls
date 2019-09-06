@@ -39,7 +39,7 @@
   getFileInfo(file1, anotherFile);
 
 
-  TEST( timeCompare(file, file1) == -1);//printFiles vs main.c
+  TEST( timeCompare(&file, &file1) == -1);//printFiles vs main.c
 
  
 
@@ -51,7 +51,7 @@
   getFileInfo(file3,filename);
 
 
-  TEST( timeCompare(file1, file3) == 1 );//main.c vs getFileInfo
+  TEST( timeCompare(&file1, &file3) == 1 );//main.c vs getFileInfo
 }
 
 

@@ -3,7 +3,7 @@
  * Filename: getFileInfo.c
  * Author: Abdikhalik Ahmed
  * UserId: cs30s2019ac
- * Date:    8/29/2019
+ * Date:    9/5/2019
  * Sources of Help: None
  *
  */
@@ -58,7 +58,7 @@ void getFileInfo(struct fileInfo* fi, const char* filename) {
      
     fi->filename[i] = filename[i];     
   }
-    
+  //fill struct info  
   fi-> time = sb.st_mtime;//get modification time
   fi->size = sb.st_size;//size of file
   fi->mode = sb.st_mode;//mode of file
