@@ -1,7 +1,7 @@
 
 /*  
  * Filename: buildFileTree.c
- * Author: Abdikhalik Ahmed
+ * Author: Abdulkhaliq Omar
  * UserId: cs30s2019ac
  * Date:    9/5/2019
  * Sources of Help: None
