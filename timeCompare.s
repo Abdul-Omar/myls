@@ -1,12 +1,11 @@
 
 /*
  * Filename: timeCompare.s
- * Author: Abdikhalik Ahmed
+ * Author: Abdulkhaliq Omar
  * Userid: cse30s219ac
  * Description: defines the timeCompare funtion that is passed in as
  *              parameter for qsort() function used in the PA4 program.
  * Date: 9/5/2019
- * Sources of Help: NONE
  */
 
 .syntax unified
